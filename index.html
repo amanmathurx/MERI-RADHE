@@ -1,0 +1,620 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Universe for You</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: #030612;
+    color: white;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* GALAXY BACKGROUND */
+
+.universe {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 35px 5%;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 48% 45%, rgba(48,37,103,.42), transparent 48%),
+        radial-gradient(ellipse at 15% 85%, rgba(10,80,92,.25), transparent 40%),
+        radial-gradient(ellipse at 85% 10%, rgba(75,36,100,.25), transparent 40%),
+        linear-gradient(120deg, #02040e, #0a1028 50%, #030611);
+}
+
+.nebula {
+    position: absolute;
+    inset: -30%;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at 35% 45%, rgba(85,61,160,.16), transparent 35%),
+        radial-gradient(ellipse at 70% 55%, rgba(12,112,125,.13), transparent 35%);
+    filter: blur(35px);
+    animation: nebulaMove 22s ease-in-out infinite alternate;
+}
+
+@keyframes nebulaMove {
+    from { transform: translate(-3%,-2%) scale(1); }
+    to { transform: translate(4%,3%) scale(1.12); }
+}
+
+/* STARS */
+
+.stars, .stars-two, .stars-three {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.stars {
+    background-image:
+        radial-gradient(2px 2px at 20px 30px,#fff,transparent),
+        radial-gradient(1px 1px at 90px 120px,#fff,transparent),
+        radial-gradient(2px 2px at 180px 80px,#d9e6ff,transparent),
+        radial-gradient(1px 1px at 250px 190px,#fff,transparent),
+        radial-gradient(2px 2px at 330px 40px,#fff,transparent);
+    background-size: 380px 250px;
+    animation: starsMove 65s linear infinite;
+    opacity: .8;
+}
+
+.stars-two {
+    background-image:
+        radial-gradient(1px 1px at 60px 70px,#fff,transparent),
+        radial-gradient(2px 2px at 160px 160px,#b8d9ff,transparent),
+        radial-gradient(1px 1px at 280px 50px,#fff,transparent);
+    background-size: 320px 220px;
+    animation: starsMove 95s linear infinite reverse;
+    opacity: .6;
+}
+
+.stars-three {
+    background-image:
+        radial-gradient(1px 1px at 100px 100px,#fff,transparent),
+        radial-gradient(1px 1px at 220px 30px,#ffe5a8,transparent);
+    background-size: 270px 180px;
+    animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+@keyframes starsMove {
+    from { transform: translateY(0); }
+    to { transform: translateY(-250px); }
+}
+
+@keyframes twinkle {
+    from { opacity: .2; }
+    to { opacity: .9; }
+}
+
+/* MAIN LAYOUT */
+
+.content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1450px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+}
+
+/* MOR PANKH */
+
+.feather-section {
+    width: 52%;
+    min-height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* AURA */
+
+.feather-aura {
+    position: absolute;
+    width: 430px;
+    height: 430px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(30,194,166,.23),
+        rgba(42,105,190,.12) 45%,
+        transparent 72%
+    );
+    filter: blur(25px);
+    animation: auraPulse 5s ease-in-out infinite;
+}
+
+@keyframes auraPulse {
+    0%,100% { transform: scale(.88); opacity: .65; }
+    50% { transform: scale(1.13); opacity: 1; }
+}
+
+/* ORBITS - PROPERLY CENTERED */
+
+.orbit {
+    position: absolute;
+    width: 470px;
+    height: 470px;
+    max-width: 95%;
+    max-height: 95%;
+    inset: 0;
+    margin: auto;
+    border: 1px solid rgba(255,215,130,.25);
+    border-radius: 50%;
+    z-index: 1;
+    animation: orbitSpin 22s linear infinite;
+}
+
+.orbit-inner {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    max-width: 75%;
+    max-height: 75%;
+    inset: 0;
+    margin: auto;
+    border: 1px dashed rgba(83,225,201,.30);
+    border-radius: 50%;
+    z-index: 1;
+    animation: orbitSpin 30s linear infinite reverse;
+}
+
+@keyframes orbitSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.orbit-sparkle {
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #ffe6a0;
+    box-shadow: 0 0 8px 3px rgba(255,209,112,.9),
+                0 0 20px 6px rgba(255,173,65,.45);
+}
+
+.orbit-inner .orbit-sparkle {
+    background: #68f6dc;
+    box-shadow: 0 0 8px 3px rgba(75,245,215,.8),
+                0 0 18px 5px rgba(75,200,255,.35);
+}
+
+/* FEATHER IMAGE */
+
+.feather-image {
+    position: relative;
+    z-index: 3;
+    width: min(95%, 500px);
+    max-height: 80vh;
+    object-fit: contain;
+    filter:
+        drop-shadow(0 0 12px rgba(65,224,192,.4))
+        drop-shadow(0 0 30px rgba(31,143,200,.35));
+    animation: featherFloat 5s ease-in-out infinite;
+}
+
+@keyframes featherFloat {
+    0%,100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-15px) rotate(3deg); }
+}
+
+/* FEATHER SPARKLES */
+
+.feather-sparkles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.feather-sparkles span {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #ffe8a8;
+    box-shadow: 0 0 10px 3px rgba(255,215,130,.8);
+    animation: sparkle 3s ease-in-out infinite;
+}
+
+.feather-sparkles span:nth-child(1) { top:20%; left:20%; }
+.feather-sparkles span:nth-child(2) { top:35%; right:12%; animation-delay:1s; }
+.feather-sparkles span:nth-child(3) { bottom:25%; left:18%; animation-delay:1.8s; }
+.feather-sparkles span:nth-child(4) { bottom:20%; right:20%; animation-delay:.7s; }
+.feather-sparkles span:nth-child(5) { top:12%; right:30%; animation-delay:2.2s; }
+.feather-sparkles span:nth-child(6) { top:55%; left:10%; animation-delay:1.4s; }
+
+@keyframes sparkle {
+    0%,100% { opacity:.15; transform:scale(.6); }
+    50% { opacity:1; transform:scale(1.8); }
+}
+
+/* RIGHT TEXT PANEL */
+
+.countdown-section {
+    width: 42%;
+    max-width: 480px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 32px 24px;
+    gap: 12px;
+    border: 1px solid rgba(230,206,160,.2);
+    border-radius: 22px;
+    background: rgba(10,14,34,.38);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 50px rgba(70,70,150,.12);
+}
+
+.eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #b8c9e9;
+    margin-bottom: 12px;
+}
+
+.heading {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(27px,3.4vw,43px);
+    font-weight: 500;
+    line-height: 1.35;
+    color: #f7e5bd;
+    text-shadow: 0 0 20px rgba(255,219,158,.25);
+}
+
+.subtitle {
+    font-size: 22px;
+    color: #c7c6dd;
+    margin-top: 10px;
+    margin-bottom: 18px;
+}
+
+/* THREE TIMER BOXES */
+
+.timer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 330px;
+    gap: 10px;
+    margin: 10px auto;
+}
+
+.time-box {
+    flex: 1;
+    min-width: 0;
+    padding: 16px 4px;
+    border-radius: 13px;
+    border: 1px solid rgba(230,206,160,.3);
+    background: rgba(255,255,255,.035);
+    box-shadow: inset 0 0 18px rgba(255,255,255,.025);
+    text-align: center;
+}
+
+.time-number {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(24px,3vw,36px);
+    color: #ffe3a6;
+    text-shadow: 0 0 15px rgba(255,207,112,.5);
+}
+
+.time-label {
+    display: block;
+    margin-top: 8px;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: #b7bfd4;
+}
+
+.bottom-message {
+    margin-top: 18px;
+    font-size: 19px;
+    font-style: italic;
+    color: #d6c9dc;
+    line-height: 1.5;
+}
+
+.little-star {
+    color: #f5d99d;
+    margin-top: 10px;
+    font-size: 20px;
+    letter-spacing: 8px;
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+    body { overflow-y: auto; }
+
+    .universe {
+        min-height: 100svh;
+        padding: 30px 18px;
+    }
+
+    .content {
+        flex-direction: column;
+        gap: 22px;
+    }
+
+    .feather-section {
+        width: 100%;
+        min-height: 340px;
+    }
+
+    .feather-image {
+        width: min(78%,330px);
+        max-height: 340px;
+    }
+
+    .feather-aura {
+        width: 280px;
+        height: 280px;
+    }
+
+    .orbit {
+        width: 320px;
+        height: 320px;
+    }
+
+    .orbit-inner {
+        width: 245px;
+        height: 245px;
+    }
+
+    .countdown-section {
+        width: 100%;
+        max-width: 480px;
+        padding: 28px 16px;
+    }
+
+    .eyebrow {
+        letter-spacing: 3px;
+    }
+}
+
+@media (max-width: 380px) {
+    .timer { gap: 6px; }
+    .time-box { padding: 13px 2px; }
+    .time-label { font-size: 8px; letter-spacing: 1px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+.countdown-section {
+    position: relative;
+    z-index: 1;
+    transform: none;
+}
+
+#party-blast {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+}
+</style>
+</head>
+
+<body>
+
+<div class="universe">
+
+    <div class="nebula"></div>
+    <div class="stars"></div>
+    <div class="stars-two"></div>
+    <div class="stars-three"></div>
+
+    <main class="content">
+
+        <!-- LEFT: MOR PANKH -->
+
+        <section class="feather-section">
+
+            <div class="feather-aura"></div>
+
+            <div class="orbit">
+                <div class="orbit-sparkle"></div>
+            </div>
+
+            <div class="orbit-inner">
+                <div class="orbit-sparkle"></div>
+            </div>
+
+            <div class="feather-sparkles">
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+            </div>
+
+            <img
+                src="images/morpankh.png"
+                alt="Beautiful peacock feather"
+                class="feather-image"
+            >
+
+        </section>
+
+        <!-- RIGHT: TIMER -->
+
+        <section class="countdown-section">
+
+            <p class="eyebrow">A LITTLE UNIVERSE FOR YOU</p>
+
+            <h1 class="heading">
+                Something Magical<br>
+                Is Waiting...
+            </h1>
+
+            <p class="subtitle">
+                A little surprise written in the stars.
+            </p>
+
+            <div class="timer">
+
+                <div class="time-box">
+                    <span class="time-number" id="hours">11</span>
+                    <span class="time-label">HOURS</span>
+                </div>
+
+                <div class="time-box">
+                    <span class="time-number" id="minutes">59</span>
+                    <span class="time-label">MINUTES</span>
+                </div>
+
+                <div class="time-box">
+                    <span class="time-number" id="seconds">40</span>
+                    <span class="time-label">SECONDS</span>
+                </div>
+
+            </div>
+
+            <p class="bottom-message">
+                Some moments are worth waiting for... ♡
+            </p>
+
+            <span class="little-star">✦ ✧ ✦</span>
+
+        </section>
+
+    </main>
+</div>
+
+<script>
+
+const hoursElement = document.getElementById("hours");
+const minutesElement = document.getElementById("minutes");
+const secondsElement = document.getElementById("seconds");
+
+let elapsedTime = (11 * 3600) + (59 * 60) + 40;
+const speed = 5.5;
+
+let lastUpdate = Date.now();
+let timer;
+
+function countdown() {
+    const now = Date.now();
+    elapsedTime += ((now - lastUpdate) / 1000) * speed;
+    lastUpdate = now;
+
+    const totalSeconds = Math.floor(elapsedTime);
+
+    if (totalSeconds >= 12 * 3600) {
+        hoursElement.textContent = "00";
+        minutesElement.textContent = "00";
+        secondsElement.textContent = "00";
+
+        clearInterval(timer);
+
+        document.body.insertAdjacentHTML("beforeend", `
+            <div id="party-blast">
+                <div class="party-message">🎉 SURPRISE! 🎉</div>
+            </div>
+        `);
+
+        const style = document.createElement("style");
+        style.textContent = `
+            #party-blast {
+                position: fixed;
+                inset: 0;
+                z-index: 9999;
+                pointer-events: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: rgba(0,0,0,0.25);
+                overflow: hidden;
+            }
+            .party-message {
+                color: gold;
+                font-size: clamp(28px, 6vw, 65px);
+                font-weight: bold;
+                text-shadow: 0 0 25px gold;
+                animation: partyPop 1.5s ease-out forwards;
+            }
+            .confetti {
+                position: absolute;
+                top: -20px;
+                width: 10px;
+                height: 16px;
+                animation: confettiFall 2.5s linear forwards;
+            }
+            @keyframes partyPop {
+                0% { transform: scale(0); opacity: 0; }
+                50% { transform: scale(1.2); opacity: 1; }
+                100% { transform: scale(1); opacity: 1; }
+            }
+            @keyframes confettiFall {
+                to { transform: translateY(110vh) rotate(900deg); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        const colors = ["#FFD700", "#FF4D6D", "#FFFFFF", "#9B5DE5", "#00F5D4"];
+
+        for (let i = 0; i < 120; i++) {
+            const piece = document.createElement("div");
+            piece.className = "confetti";
+            piece.style.left = Math.random() * 100 + "vw";
+            piece.style.background = colors[i % colors.length];
+            piece.style.animationDelay = Math.random() * 0.8 + "s";
+            document.getElementById("party-blast").appendChild(piece);
+        }
+
+        setTimeout(() => {
+            window.location.href = "page2.html";
+        }, 3000);
+
+        return;
+    }
+
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    hoursElement.textContent = String(hours).padStart(2, "0");
+    minutesElement.textContent = String(minutes).padStart(2, "0");
+    secondsElement.textContent = String(seconds).padStart(2, "0");
+}
+
+countdown();
+timer = setInterval(countdown, 100);
+</script>
+
+</body>
+</html>

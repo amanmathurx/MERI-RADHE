@@ -1,0 +1,392 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heart Galaxy ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #03020b;
+    font-family: Georgia, serif;
+}
+
+.back-button {
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    z-index: 20;
+    color: #ff526b;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 2px;
+    padding: 10px 18px;
+    border: 1px solid rgba(255,60,90,.5);
+    border-radius: 30px;
+    box-shadow: 0 0 15px rgba(255,40,80,.3);
+}.back-button {
+    transition: all .3s ease;
+}
+
+.back-button:hover {
+    color: #ffffff;
+    background: rgba(220, 15, 50, .95);
+    border-color: #ff294f;
+    box-shadow:
+        0 0 12px rgba(255, 30, 70, .8),
+        0 0 28px rgba(255, 30, 70, .6);
+    transform: scale(1.06);
+}
+
+.space {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    background:
+        linear-gradient(rgba(3,2,15,.15), rgba(3,2,15,.2)),
+        url("images/galaxy.png") center center / cover no-repeat;
+}
+
+.nebula {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(100,30,160,.15), transparent 55%),
+        radial-gradient(ellipse at 80% 20%, rgba(20,80,180,.12), transparent 50%);
+    pointer-events: none;
+}
+
+.stars {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(1px 1px at 10% 20%, white, transparent),
+        radial-gradient(2px 2px at 30% 70%, white, transparent),
+        radial-gradient(1px 1px at 65% 30%, white, transparent),
+        radial-gradient(2px 2px at 85% 80%, white, transparent),
+        radial-gradient(1px 1px at 50% 50%, white, transparent);
+    background-size: 250px 250px;
+    animation: starsMove 35s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes starsMove {
+    from { background-position: 0 0; }
+    to { background-position: 250px 250px; }
+}
+
+/* HEART GALAXY */
+
+.heart-galaxy {
+    position: absolute;
+    width: min(48vw, 680px);
+    height: min(85vh, 760px);
+    left: 4%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Smooth interactive movement */
+    transition:
+        transform .55s cubic-bezier(.2,.8,.2,1),
+        filter .55s ease;
+
+    transform-origin: center center;
+    cursor: pointer;
+    z-index: 3;
+}
+
+/* POP-UP EFFECT ON HOVER */
+
+@media (hover: hover) and (pointer: fine) {
+    .heart-galaxy:hover {
+        transform: translateY(-50%) scale(1.055) rotate(-1deg);
+        filter: drop-shadow(0 0 22px rgba(100,160,255,.45));
+    }
+}
+
+.heart-galaxy img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 0 25px rgba(100,100,255,.4));
+    transition: filter .55s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .heart-galaxy:hover img {
+        filter:
+            drop-shadow(0 0 18px rgba(100,180,255,.8))
+            drop-shadow(0 0 35px rgba(150,100,255,.5));
+    }
+}
+
+/* ENERGY EFFECT */
+
+.energy {
+    position: absolute;
+    inset: 15%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(100,160,255,.18), transparent 65%);
+    filter: blur(20px);
+    animation: energyPulse 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes energyPulse {
+    0%, 100% { opacity: .3; transform: scale(.9); }
+    50% { opacity: .9; transform: scale(1.12); }
+}
+
+.light-flow {
+    position: absolute;
+    inset: 18%;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        transparent,
+        rgba(120,180,255,.65),
+        transparent 30%,
+        rgba(190,120,255,.5),
+        transparent 65%,
+        rgba(100,200,255,.6),
+        transparent
+    );
+    filter: blur(18px);
+    mix-blend-mode: screen;
+    animation: lightRotate 9s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes lightRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(2px 2px at 20% 30%, rgba(180,210,255,.9), transparent),
+        radial-gradient(2px 2px at 70% 65%, rgba(220,180,255,.9), transparent),
+        radial-gradient(1px 1px at 45% 80%, white, transparent);
+    background-size: 180px 180px;
+    animation: particleFlow 12s linear infinite;
+}
+
+@keyframes particleFlow {
+    from { background-position: 0 0; }
+    to { background-position: 180px -180px; }
+}
+
+/* TRANSPARENT GLASS MESSAGE BOX */
+
+.message-box {
+    position: absolute;
+    z-index: 10;
+    width: min(42vw, 560px);
+    height: min(78vh, 720px);
+    min-height: 420px;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    padding: 38px 42px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+
+    background: rgba(5,15,40,.06);
+    border: 1px solid rgba(100,190,255,.75);
+    border-radius: 18px;
+
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+
+    box-shadow:
+        0 0 12px rgba(0,140,255,.4),
+        0 0 35px rgba(0,110,255,.25),
+        inset 0 0 20px rgba(0,140,255,.08);
+
+    animation: blueGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes blueGlow {
+    from {
+        box-shadow:
+            0 0 12px rgba(0,140,255,.3),
+            0 0 25px rgba(0,110,255,.15),
+            inset 0 0 15px rgba(0,140,255,.05);
+    }
+    to {
+        box-shadow:
+            0 0 20px rgba(0,160,255,.55),
+            0 0 45px rgba(0,110,255,.3),
+            inset 0 0 25px rgba(0,140,255,.12);
+    }
+}
+
+.message-box h1 {
+    color: #e9f5ff;
+    font-size: clamp(25px, 3vw, 42px);
+    margin-bottom: 28px;
+    text-shadow: 0 0 15px rgba(80,170,255,.9);
+    letter-spacing: 2px;
+    flex-shrink: 0;
+}
+
+.message-box p {
+    color: rgba(240,245,255,.95);
+    font-size: 15px;
+    line-height: 2;
+    letter-spacing: .4px;
+    width: 100%;
+    max-width: 460px;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    margin-bottom: 24px;
+    padding: 5px 12px 15px 5px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(80,170,255,.7) transparent;
+}
+
+.message-box p::-webkit-scrollbar {
+    width: 5px;
+}
+
+.message-box p::-webkit-scrollbar-thumb {
+    background: rgba(80,170,255,.7);
+    border-radius: 10px;
+}
+
+.surprise-button {
+    flex-shrink: 0;
+    padding: 14px 28px;
+    color: white;
+    background: rgba(160,10,35,.35);
+    border: 1px solid rgba(255,70,100,.8);
+    border-radius: 30px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255,30,70,.35);
+    transition: .3s;
+}
+
+.surprise-button:hover {
+    background: rgba(190,15,50,.65);
+    box-shadow: 0 0 25px rgba(255,30,70,.7);
+    transform: scale(1.04);
+}
+
+.vignette {
+    position: absolute;
+    inset: 0;
+    z-index: 6;
+    pointer-events: none;
+    background: radial-gradient(ellipse, transparent 45%, rgba(0,0,10,.25) 100%);
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+    .heart-galaxy {
+        width: 75vw;
+        height: 42vh;
+        left: 12.5%;
+        top: 25%;
+        transform: translateY(-50%);
+    }
+
+    .heart-galaxy:active {
+        transform: translateY(-50%) scale(1.06);
+    }
+
+    .message-box {
+        width: 88vw;
+        height: 65vh;
+        min-height: 350px;
+        right: 6%;
+        top: 78%;
+        padding: 22px;
+        background: rgba(5,15,40,.06);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+    }
+
+    .message-box h1 {
+        font-size: 26px;
+    }
+
+    .message-box p {
+        font-size: 13px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<a href="page2.html" class="back-button">← BACK</a>
+
+<div class="space">
+
+    <div class="nebula"></div>
+    <div class="stars"></div>
+
+    <div class="heart-galaxy">
+
+        <div class="energy"></div>
+        <div class="light-flow"></div>
+        <div class="particles"></div>
+
+        <img src="images/heart-galaxy.png" alt="Heart shaped galaxy">
+
+    </div>
+
+    <div class="message-box">
+
+        <h1>Happy Birthday maharani ji !!</h1>
+
+        <p>
+           RADHE RADHE meri pyari bhori bhari si maharani ji. am here 
+          to wish you a very very happy birthday Ms. Choubey. 
+           I hope you going to have a best day ever. Shri ji bless you,
+           lala keep you safe from evil eyes. you are so amazing and beautiful, Haye nazar alge meri radhe ko.
+            Rise and Shine
+           ✨
+        </p>
+
+       <button class="surprise-button"
+onclick="window.location.href='page4.html'">
+    OPEN YOUR SURPRISE ✨
+</button>
+
+    </div>
+
+    <div class="vignette"></div>
+
+</div>
+
+</body>
+</html>

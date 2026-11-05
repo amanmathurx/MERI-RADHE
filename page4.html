@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Secret Letter 🖤</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Cinzel', serif;
+    background: #080407;
+    color: #f5dfad;
+}
+
+/* BACKGROUND */
+
+.room {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+
+    background:
+        linear-gradient(rgba(5,2,8,.30), rgba(5,2,8,.45)),
+        url("images/gothicsky.jpg") center center / cover no-repeat;
+}
+
+/* GOTHIC ARCH */
+
+.arch {
+    position: absolute;
+    width: min(70vw, 850px);
+    height: 100vh;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 2px solid rgba(190,130,65,.16);
+    border-right: 2px solid rgba(190,130,65,.16);
+    border-radius: 50% 50% 0 0;
+    box-shadow:
+        inset 0 0 80px rgba(180,100,40,.06),
+        0 0 40px rgba(0,0,0,.7);
+}
+
+.arch::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75%;
+    height: 60%;
+    border: 1px solid rgba(190,130,65,.15);
+    border-bottom: none;
+    border-radius: 50% 50% 0 0;
+}
+
+/* MOONLIGHT */
+
+.moonlight {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    top: -180px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: radial-gradient(circle,
+        rgba(190,120,90,.12),
+        transparent 70%);
+    filter: blur(20px);
+}
+
+/* BACK BUTTON */
+
+.back-button {
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    z-index: 30;
+    color: #ff526b;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    padding: 10px 18px;
+    border: 1px solid rgba(255,60,90,.5);
+    border-radius: 30px;
+    box-shadow: 0 0 15px rgba(255,40,80,.25);
+    transition: .3s;
+}
+
+.back-button:hover {
+    color: white;
+    background: rgba(220,15,50,.95);
+    border-color: #ff294f;
+    box-shadow:
+        0 0 12px rgba(255,30,70,.8),
+        0 0 28px rgba(255,30,70,.6);
+    transform: scale(1.06);
+}
+
+/* RISK BUTTON */
+
+.risk-button {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    z-index: 30;
+    padding: 11px 18px;
+    border: 1px solid rgba(205, 157, 82, .75);
+    border-radius: 3px;
+    background: linear-gradient(135deg, rgba(35, 12, 17, .92), rgba(8, 5, 8, .94));
+    color: #e8c58c;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 9px rgba(220, 165, 80, .55);
+    box-shadow: 0 0 14px rgba(170, 105, 40, .2), inset 0 0 12px rgba(170, 105, 40, .08);
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.risk-button:hover {
+    color: #fff0c6;
+    border-color: #e6b85f;
+    background: linear-gradient(135deg, rgba(92, 13, 27, .96), rgba(25, 7, 13, .96));
+    box-shadow: 0 0 12px rgba(190, 35, 55, .55), 0 0 25px rgba(210, 155, 75, .3);
+    transform: translateY(-2px);
+}
+
+.risk-message {
+    position: absolute;
+    top: 76px;
+    right: 30px;
+    z-index: 30;
+    max-width: min(300px, calc(100vw - 40px));
+    padding: 10px 14px;
+    border-left: 2px solid #b78a4b;
+    background: rgba(8, 4, 8, .88);
+    color: #e8c58c;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    line-height: 1.7;
+    text-align: right;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: .3s ease;
+}
+
+.risk-message.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+    .risk-button {
+        top: 76px;
+        right: 15px;
+        padding: 9px 11px;
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .risk-message {
+        top: 122px;
+        right: 15px;
+        font-size: 9px;
+    }
+}
+
+/* HEADING */
+
+.heading {
+    position: absolute;
+    top: 9%;
+    width: 100%;
+    text-align: center;
+    z-index: 5;
+}
+
+.heading h1 {
+    font-size: clamp(24px,3vw,40px);
+    font-weight: 500;
+    letter-spacing: 7px;
+    color: #eacb8b;
+    text-shadow: 0 0 20px rgba(220,150,65,.45);
+}
+
+.heading p {
+    margin-top: 12px;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: rgba(240,210,165,.6);
+}
+
+/* GOLDEN PARTICLES */
+
+.particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(2px 2px at 15% 25%, #dba85e, transparent),
+        radial-gradient(2px 2px at 75% 20%, #f4c77b, transparent),
+        radial-gradient(1px 1px at 45% 65%, #fff0bc, transparent),
+        radial-gradient(2px 2px at 85% 75%, #dba85e, transparent),
+        radial-gradient(1px 1px at 25% 80%, #fff0bc, transparent);
+    background-size: 190px 190px;
+    animation: particleMove 18s linear infinite;
+}
+
+@keyframes particleMove {
+    from { background-position: 0 0; }
+    to { background-position: 190px -190px; }
+}
+
+/* ROSES */
+
+.rose {
+    position: absolute;
+    font-size: clamp(35px,5vw,65px);
+    opacity: .75;
+    filter: drop-shadow(0 0 15px rgba(180,20,35,.5));
+    animation: roseFloat 5s ease-in-out infinite;
+}
+
+.rose.left {
+    left: 7%;
+    bottom: 12%;
+}
+
+.rose.right {
+    right: 7%;
+    bottom: 15%;
+    animation-delay: 2s;
+}
+
+@keyframes roseFloat {
+    0%,100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-15px) rotate(5deg); }
+}
+
+/* CANDLES */
+
+.candle {
+    position: absolute;
+    bottom: 8%;
+    width: 13px;
+    height: 75px;
+    background: linear-gradient(90deg,#4c271b,#b68a53,#4c271b);
+    border-radius: 3px;
+    box-shadow: 0 0 20px rgba(255,150,50,.2);
+}
+
+.candle::before {
+    content: "";
+    position: absolute;
+    width: 13px;
+    height: 22px;
+    left: 0;
+    top: -22px;
+    background: radial-gradient(ellipse,#fff6b1 5%,#ffae37 40%,transparent 75%);
+    filter: blur(2px);
+    animation: flame 1s ease-in-out infinite alternate;
+}
+
+.candle.one { left: 18%; }
+.candle.two { right: 18%; height: 55px; }
+
+@keyframes flame {
+    from { transform: scale(.8) rotate(-4deg); }
+    to { transform: scale(1.1) rotate(4deg); }
+}
+
+/* ENVELOPE AREA */
+
+.envelope-area {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: min(500px,85vw);
+    height: 330px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1100px;
+    z-index: 10;
+}
+
+.envelope {
+    position: relative;
+    width: min(390px,75vw);
+    height: 235px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition:
+        transform .6s cubic-bezier(.2,.8,.2,1),
+        filter .6s ease;
+    animation: envelopeFloat 4s ease-in-out infinite;
+    filter: drop-shadow(0 20px 35px rgba(0,0,0,.7));
+}
+
+@keyframes envelopeFloat {
+    0%,100% { translate: 0 0; }
+    50% { translate: 0 -12px; }
+}
+
+@media (hover:hover) and (pointer:fine) {
+    .envelope:not(.opened):hover {
+        transform: scale(1.08) rotateY(-5deg) rotateX(3deg);
+        filter:
+            drop-shadow(0 0 18px rgba(220,165,80,.45))
+            drop-shadow(0 20px 35px rgba(0,0,0,.7));
+    }
+}
+
+/* ENVELOPE BODY */
+
+.envelope-back {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg,#21151a,#0b080a);
+    border: 1px solid #8b6335;
+    border-radius: 5px;
+    box-shadow: inset 0 0 25px rgba(220,170,90,.08);
+}
+
+/* LETTER INSIDE */
+
+.letter {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    left: 5%;
+    bottom: 3%;
+    padding: 22px;
+    background: linear-gradient(145deg,#e5d1a5,#b99a66);
+    color: #342019;
+    text-align: center;
+    z-index: 2;
+    border: 1px solid #d9b978;
+    transition: transform 1.2s ease;
+    overflow: hidden;
+}
+
+.letter h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.letter p {
+    font-family: Georgia,serif;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+/* ENVELOPE FRONT */
+
+.envelope-front {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    background: linear-gradient(145deg,#302027,#120c10);
+    clip-path: polygon(0 0,50% 55%,100% 0,100% 100%,0 100%);
+    border-bottom: 1px solid #a77b42;
+}
+
+/* TOP FLAP */
+
+.flap {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    background: linear-gradient(145deg,#4a3032,#1b1016);
+    clip-path: polygon(0 0,100% 0,50% 58%);
+    transform-origin: top center;
+    transition: transform 1s ease;
+    border-top: 1px solid #b28a51;
+}
+
+/* GOLD DETAILS */
+
+.gold-line {
+    position: absolute;
+    inset: 9px;
+    z-index: 6;
+    border: 1px solid rgba(218,170,95,.55);
+    pointer-events: none;
+}
+
+/* WAX SEAL */
+
+.seal {
+    position: absolute;
+    z-index: 8;
+    width: 58px;
+    height: 58px;
+    left: 50%;
+    top: 53%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%,#e5b45c,#9b511f 65%,#50200e);
+    border: 2px solid #d6a65a;
+    box-shadow:
+        0 0 15px rgba(220,160,70,.4),
+        inset 0 0 8px rgba(255,220,150,.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff0c6;
+    font-size: 27px;
+    transition: opacity .4s;
+}
+
+/* OPEN STATE */
+
+.envelope.opened {
+    animation: none;
+    transform: translateY(-15px) scale(.95);
+}
+
+.envelope.opened .flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope.opened .seal {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.envelope.opened .letter {
+    transform: translateY(-170px);
+    height: 250px;
+    z-index: 7;
+    overflow-y: auto;
+    box-shadow: 0 0 30px rgba(220,170,90,.3);
+}
+
+/* INSTRUCTION */
+
+.instruction {
+    position: absolute;
+    top: 76%;
+    width: 100%;
+    text-align: center;
+    color: #e8c58c;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 12px rgba(230,170,80,.5);
+    animation: instructionGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes instructionGlow {
+    from { opacity: .55; }
+    to { opacity: 1; }
+}
+
+.instruction span {
+    display: block;
+    font-family: 'Great Vibes',cursive;
+    font-size: 27px;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+/* FOOTER */
+
+.footer {
+    position: absolute;
+    bottom: 3%;
+    width: 100%;
+    text-align: center;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: rgba(220,180,120,.35);
+}
+
+/* MOBILE */
+
+@media(max-width:768px) {
+    .heading {
+        top: 13%;
+    }
+
+    .heading h1 {
+        letter-spacing: 4px;
+    }
+
+    .heading p {
+        font-size: 8px;
+        letter-spacing: 2px;
+    }
+
+    .envelope-area {
+        top: 48%;
+    }
+
+    .envelope {
+        height: 190px;
+    }
+
+    .envelope.opened .letter {
+        transform: translateY(-140px);
+        height: 220px;
+    }
+
+    .letter {
+        padding: 15px;
+    }
+
+    .letter h2 {
+        font-size: 25px;
+    }
+
+    .letter p {
+        font-size: 10px;
+    }
+
+    .instruction {
+        top: 73%;
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .rose {
+        font-size: 35px;
+    }
+
+    .rose.left { left: 3%; }
+    .rose.right { right: 3%; }
+
+    .candle.one { left: 12%; }
+    .candle.two { right: 12%; }
+} .enter-button {
+    margin-top: 8px;
+    padding: 10px 16px;
+    background: transparent;
+    border: 1px solid #c99b55;
+    color: #f1d49a;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.enter-button:hover {
+    background: #8b1729;
+    color: white;
+    border-color: #e5b45c;
+    box-shadow: 0 0 18px rgba(210,155,75,.45);
+    transform: scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<a href="page3.html" class="back-button">← BACK</a>
+
+<div class="room">
+
+    <button class="risk-button" type="button" onclick="showRiskMessage()">
+        CLICK AT YOUR OWN RISK, MERI RADHE
+    </button>
+    <div class="risk-message" id="riskMessage">
+    YOU HAVE BEEN WARNED... THE DARKNESS AWAITS 🥀
+
+    <br><br>
+
+    <button class="enter-button"
+        onclick="window.location.href='page5.html'">
+        STILL WANT TO ENTER?
+    </button>
+</div>
+
+    <div class="arch"></div>
+    <div class="moonlight"></div>
+    <div class="particles"></div>
+
+    <div class="heading">
+        <h1>A SECRET LETTER</h1>
+        <p>A LITTLE SOMETHING FROM SHYAMA </p>
+    </div>
+
+    <div class="rose left">🥀</div>
+    <div class="rose right">🌹</div>
+
+    <div class="candle one"></div>
+    <div class="candle two"></div>
+
+    <div class="envelope-area">
+
+        <div class="envelope" id="envelope" onclick="openLetter()">
+
+            <div class="envelope-back"></div>
+
+            <div class="letter">
+                <h2>To meri pyari Radhe</h2>
+
+                <p>
+                    Dear Ms.Choubey ,<br><br>
+
+                   HAAN TOH MAHARANI JI YAHA AAHI GAYI HO TOH 
+                   FER RADHE RADHE YE SHYAMA AISE HI BIRTHDAY WASTE
+                   NA JANE DEGA, COZ MERI RADHE KA SPECIAL DAY AAJ, 
+                   AAJ TUM JO BOLOGI WAHI HOGA JI,
+                   AAPKA HUKKUM SARAKHON PAR MAHARANI JI.<br><br>
+
+                   JI JANAM DIWAS KI HARDIK SUBHKAMNAYE
+                   YAAR MAHARANI JI APP TOH EK DUM AMAZING HO
+                   OR GUSSA TOH NAAK PAR REHTA HAI BUT CHALEGA  
+                   COZ ISS SHYAMA KO TOH SAB CHALTA HAI.<br><br>
+
+                   SAB CHLTA HAI JI YAHI BAAT TOH MERI RADHE KO SPECIAL BANATI H AND
+                   YOU DESERVE ALL THE BEAUTIFULL THINGS MAHARANI JI. ❤️
+                   UR SHYAMA ABHI HEHE 
+                </p>
+            </div>
+
+            <div class="envelope-front"></div>
+            <div class="flap"></div>
+            <div class="gold-line"></div>
+
+            <div class="seal">♥</div>
+
+        </div>
+
+    </div>
+
+    <div class="instruction" id="instruction">
+        A MESSAGE IS WAITING FOR YOU
+        <span>Click to open your letter ❤️</span>
+    </div>
+
+    <div class="footer">
+        SEALED WITH LOVE · ALWAYS
+    </div>
+
+</div>
+
+<script>
+function showRiskMessage() {
+    const message = document.getElementById("riskMessage");
+    message.classList.toggle("show");
+}
+
+function openLetter() {
+    const envelope = document.getElementById("envelope");
+    const instruction = document.getElementById("instruction");
+
+    envelope.classList.add("opened");
+
+    instruction.innerHTML =
+        "A LITTLE MESSAGE JUST FOR YOU ❤️";
+}
+
+// CLICK OUTSIDE TO CLOSE
+document.addEventListener("click", function(event) {
+
+    const envelope = document.getElementById("envelope");
+    const riskMessage = document.getElementById("riskMessage");
+    const riskButton = document.querySelector(".risk-button");
+    const instruction = document.getElementById("instruction");
+
+    // Keep envelope open when clicking inside it
+    if (!envelope.contains(event.target)) {
+        envelope.classList.remove("opened");
+
+        instruction.innerHTML =
+            "A MESSAGE IS WAITING FOR YOU" +
+            "<span>Click to open your letter ❤️</span>";
+    }
+
+    // Hide warning when clicking outside warning and its button
+    if (
+        !riskMessage.contains(event.target) &&
+        !riskButton.contains(event.target)
+    ) {
+        riskMessage.classList.remove("show");
+    }
+
+});
+</script>
+
+</body>
+</html>

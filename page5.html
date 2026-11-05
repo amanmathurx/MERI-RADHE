@@ -1,0 +1,1071 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MERI RADHE MULTIVERSE ✨</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Cinzel', serif;
+    color: white;
+    background: #03030c;
+}
+
+.universe {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+
+    background:
+        linear-gradient(rgba(3,3,15,.25), rgba(3,3,15,.45)),
+        url("images/nebula.jpg") center center / cover no-repeat;
+}
+
+/* BACK BUTTON */
+
+.back-button {
+    position: absolute;
+    top: 22px;
+    left: 25px;
+    z-index: 20;
+    color: #e8c9ff;
+    text-decoration: none;
+    font-size: 10px;
+    letter-spacing: 2px;
+    padding: 10px 17px;
+    border: 1px solid rgba(210,180,255,.4);
+    transition: .3s;
+}
+
+.back-button:hover {
+    background: rgba(160,100,220,.2);
+    box-shadow: 0 0 18px rgba(190,140,255,.5);
+}
+
+/* HEADING */
+
+.heading {
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    text-align: center;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.heading h1 {
+    font-size: clamp(23px, 4vw, 43px);
+    font-weight: 400;
+    letter-spacing: 6px;
+    color: #f4e4ff;
+    text-shadow: 0 0 25px rgba(190,130,255,.8);
+}
+
+.heading p {
+    margin-top: 14px;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: rgba(235,220,255,.75);
+}
+
+/* ANIMATED STARS */
+
+#starCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* CONSTELLATION THREADS */
+
+.connections {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.connections line {
+    stroke: rgba(220,190,255,.65);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 7 12;
+    animation: threadGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes threadGlow {
+    from {
+        opacity: .35;
+        stroke: rgba(190,155,255,.4);
+    }
+    to {
+        opacity: 1;
+        stroke: rgba(235,210,255,.9);
+    }
+}
+
+/* ALBUM AREA */
+
+.album-area {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+}
+
+.album {
+    position: absolute;
+    width: 210px;
+    padding: 17px;
+    text-align: center;
+    cursor: pointer;
+
+    border: 1px solid rgba(220,195,255,.3);
+    border-radius: 18px;
+
+    background: rgba(255,255,255,.075);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.25),
+        inset 0 0 20px rgba(255,255,255,.035);
+
+    transition: .4s ease;
+    animation: float 5s ease-in-out infinite;
+}
+
+.album:hover {
+    transform: translateY(-12px) scale(1.06);
+    border-color: rgba(230,190,255,.8);
+    box-shadow: 0 0 30px rgba(175,115,255,.35);
+}
+
+.album:nth-of-type(1) {
+    left: 14%;
+    top: 36%;
+}
+
+.album:nth-of-type(2) {
+    left: calc(50% - 105px);
+    top: 29%;
+    animation-delay: -1.5s;
+}
+
+.album:nth-of-type(3) {
+    right: 14%;
+    top: 36%;
+    animation-delay: -3s;
+}
+
+/* SEPARATE LAST MESSAGE BUTTON — BELOW PIECES OF YOU */
+.last-message-button {
+    position: absolute;
+    left: 50%;
+    top: calc(29% + 245px);
+    transform: translateX(-50%);
+    z-index: 6;
+    padding: 11px 20px;
+    border: 1px solid rgba(230,195,255,.55);
+    border-radius: 30px;
+    background: rgba(18,10,35,.62);
+    color: #f1ddff;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 18px rgba(175,115,255,.18);
+    transition: .3s ease;
+    white-space: nowrap;
+}
+
+.last-message-button:hover {
+    background: rgba(150,95,210,.3);
+    border-color: rgba(245,220,255,.95);
+    box-shadow: 0 0 25px rgba(190,140,255,.55);
+    transform: translateX(-50%) translateY(-3px);
+}
+
+@keyframes float {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -13px; }
+}
+
+.album-icon {
+    width: 100%;
+    height: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(175,120,255,.2),
+        rgba(100,160,255,.08)
+    );
+
+    margin-bottom: 14px;
+    text-shadow: 0 0 22px rgba(210,160,255,.8);
+}
+
+.album h2 {
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 500;
+    color: #f4e5ff;
+}
+
+.album p {
+    margin-top: 9px;
+    font-family: Georgia, serif;
+    font-size: 12px;
+    color: rgba(240,225,255,.75);
+    line-height: 1.6;
+}
+
+.album small {
+    display: block;
+    margin-top: 12px;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: #d9b8ff;
+}
+
+/* FOOTER */
+
+.footer {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: rgba(230,210,255,.6);
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* ALBUM POPUP */
+
+.album-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    background: rgba(0,0,10,.72);
+    backdrop-filter: blur(9px);
+}
+
+.album-popup.show {
+    display: flex;
+    animation: fadeIn .35s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.popup-content {
+    position: relative;
+    width: min(850px, 95vw);
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 30px;
+
+    border: 1px solid rgba(220,185,255,.4);
+    border-radius: 20px;
+
+    background: rgba(14,10,30,.93);
+    box-shadow: 0 0 50px rgba(150,90,255,.25);
+}
+
+.popup-content h2 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    color: #f1dfff;
+}
+
+.popup-content .subtitle {
+    text-align: center;
+    margin: 10px 0 25px;
+    color: #cbb4e8;
+    font-family: Georgia, serif;
+    font-size: 13px;
+}
+
+.close-button {
+    position: sticky;
+    top: 0;
+    float: right;
+    margin-top: -12px;
+    margin-right: -10px;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 27px;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    clear: both;
+}
+
+.gallery img,
+.gallery video {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid rgba(220,190,255,.2);
+    background: #090817;
+}
+
+.gallery video {
+    object-fit: contain;
+}
+
+.gallery img,
+.gallery video {
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.gallery img:hover,
+.gallery video:hover {
+    border-color: rgba(220,190,255,.75);
+    box-shadow: 0 0 18px rgba(175,115,255,.25);
+}
+
+.empty-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 35px 10px;
+    font-family: Georgia, serif;
+    color: #cbb4e8;
+    font-size: 14px;
+}
+
+/* LAST MESSAGE POPUP */
+.last-message-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 10001;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 22px;
+    background: rgba(2,2,12,.82);
+    backdrop-filter: blur(12px);
+}
+
+.last-message-popup.show {
+    display: flex;
+    animation: fadeIn .35s ease;
+}
+
+.last-message-card {
+    position: relative;
+    width: min(560px, 92vw);
+    min-height: 260px;
+    padding: 48px 34px 38px;
+    border: 1px solid rgba(225,190,255,.55);
+    border-radius: 22px;
+    background: linear-gradient(145deg, rgba(28,17,48,.97), rgba(8,10,27,.97));
+    box-shadow: 0 0 55px rgba(160,105,255,.3), inset 0 0 25px rgba(255,255,255,.035);
+    text-align: center;
+}
+
+.last-message-card h2 {
+    margin-bottom: 24px;
+    color: #f2ddff;
+    font-size: clamp(17px, 3vw, 23px);
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-shadow: 0 0 18px rgba(195,145,255,.55);
+}
+
+.last-message-text {
+    color: rgba(245,232,255,.9);
+    font-family: Georgia, serif;
+    font-size: 16px;
+    line-height: 1.9;
+    white-space: pre-wrap;
+}
+
+.last-message-close {
+    position: absolute;
+    top: 12px;
+    right: 17px;
+    border: 0;
+    background: transparent;
+    color: #f5eaff;
+    font-size: 28px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.last-message-close:hover {
+    color: #d6aaff;
+    transform: scale(1.12);
+    text-shadow: 0 0 15px #c99aff;
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+    .heading {
+        top: 13%;
+    }
+
+    .heading h1 {
+        letter-spacing: 3px;
+    }
+
+    .heading p {
+        font-size: 8px;
+        letter-spacing: 2px;
+    }
+
+    .album {
+        width: 155px;
+        padding: 12px;
+    }
+
+    .album:nth-of-type(1) {
+        left: 7%;
+        top: 29%;
+    }
+
+    .album:nth-of-type(2) {
+        left: auto;
+        right: 7%;
+        top: 29%;
+    }
+
+    .album:nth-of-type(3) {
+        right: auto;
+        left: calc(50% - 77px);
+        top: 58%;
+    }
+
+    .last-message-button {
+        left: auto;
+        right: 7%;
+        top: calc(29% + 220px);
+        transform: none;
+        padding: 9px 12px;
+        font-size: 7px;
+        letter-spacing: 1px;
+    }
+
+    .last-message-button:hover {
+        transform: translateY(-3px);
+    }
+
+    .last-message-card {
+        padding: 45px 22px 28px;
+        min-height: 230px;
+    }
+
+    .last-message-text {
+        font-size: 14px;
+    }
+
+    .album-icon {
+        height: 75px;
+        font-size: 35px;
+    }
+
+    .album h2 {
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+
+    .album p {
+        font-size: 10px;
+    }
+
+    .album small {
+        font-size: 7px;
+    }
+
+    .footer {
+        bottom: 13px;
+        font-size: 7px;
+    }
+
+    .popup-content {
+        padding: 22px 15px;
+    }
+
+    .popup-content h2 {
+        font-size: 17px;
+        letter-spacing: 2px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 9px;
+    }
+
+    .gallery img,
+    .gallery video {
+        height: 145px;
+    }
+} /* MEDIA VIEWER */
+
+.media-viewer {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 10, 0.94);
+    backdrop-filter: blur(12px);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.media-viewer.active {
+    display: flex;
+}
+
+.viewer-content {
+    width: min(75vw, 900px);
+    height: 65vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.viewer-content img,
+.viewer-content video {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 14px;
+    box-shadow: 0 0 35px rgba(190, 150, 255, 0.3);
+}
+
+.viewer-nav,
+.viewer-close {
+    position: absolute;
+    color: white;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(220,190,255,0.5);
+    border-radius: 30px;
+    padding: 12px 22px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.viewer-nav:hover,
+.viewer-close:hover {
+    background: rgba(170,120,255,0.35);
+    box-shadow: 0 0 20px #b58aff;
+}
+
+.viewer-close {
+    top: 25px;
+    right: 30px;
+    font-size: 20px;
+}
+
+.viewer-prev {
+    left: 25px;
+}
+
+.viewer-next {
+    right: 25px;
+}
+
+@media(max-width: 700px) {
+    .viewer-content {
+        width: 90vw;
+        height: 55vh;
+    }
+
+    .viewer-nav {
+        position: static;
+        font-size: 11px;
+        padding: 10px 14px;
+    }
+
+    .viewer-close {
+        top: 15px;
+        right: 15px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="universe" id="universe">
+
+    <canvas id="starCanvas"></canvas>
+
+    <!-- CONSTELLATION NETWORK -->
+
+    <svg class="connections"
+         viewBox="0 0 1000 700"
+         preserveAspectRatio="none">
+
+        <line x1="100" y1="100" x2="230" y2="310"/>
+        <line x1="230" y1="310" x2="400" y2="160"/>
+        <line x1="400" y1="160" x2="500" y2="270"/>
+        <line x1="500" y1="270" x2="650" y2="110"/>
+        <line x1="650" y1="110" x2="770" y2="310"/>
+        <line x1="770" y1="310" x2="900" y2="180"/>
+
+        <line x1="230" y1="310" x2="120" y2="500"/>
+        <line x1="230" y1="310" x2="500" y2="500"/>
+        <line x1="500" y1="270" x2="500" y2="500"/>
+        <line x1="770" y1="310" x2="880" y2="500"/>
+        <line x1="770" y1="310" x2="500" y2="500"/>
+
+        <line x1="120" y1="500" x2="300" y2="600"/>
+        <line x1="300" y1="600" x2="500" y2="500"/>
+        <line x1="500" y1="500" x2="700" y2="600"/>
+        <line x1="700" y1="600" x2="880" y2="500"/>
+
+        <line x1="100" y1="100" x2="400" y2="160"/>
+        <line x1="650" y1="110" x2="900" y2="180"/>
+        <line x1="400" y1="160" x2="770" y2="310"/>
+        <line x1="230" y1="310" x2="880" y2="500"/>
+
+    </svg>
+
+    <a href="page4.html" class="back-button">← BACK</a>
+
+    <div class="heading">
+        <h1>MERI RADHE MULTIVERSE</h1>
+        <p>A LIL. WORLD OF MAHARANI JI ✨</p>
+    </div>
+
+    <!-- THREE FLOATING ALBUMS -->
+
+    <div class="album-area">
+
+        <div class="album" onclick="openAlbum(0)">
+            <div class="album-icon">👀</div>
+            <h2>TWO LITTLE UNIVERSE </h2>
+            <p> THOSE PRETTY EYES JINME YE SHYAMA KHO JATA HAI JI</p>
+            <small>OPEN MEMORY ✦</small>
+        </div>
+
+        <div class="album" onclick="openAlbum(1)">
+            <div class="album-icon">🖼️</div>
+            <h2>PIECES OF YOU</h2>
+            <p>CHORI KI HUI KI PICS</p>
+            <small>OPEN MEMORY ✦</small>
+        </div>
+
+        <button class="last-message-button" onclick="openLastMessage(event)">
+            ONE LAST MESSAGE ✦
+        </button>
+
+        <div class="album" onclick="openAlbum(2)">
+            <div class="album-icon">🎬</div>
+            <h2>UR SNAPS</h2>
+            <p> CHORI KI HUI VIDS BUT ATI SUNDAR LAGRI HO JI </p>
+            <small>OPEN MEMORY ✦</small>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        SOME STORIES ARE WRITTEN BY GOD ❤️
+    </div>
+
+</div>
+
+
+<!-- ALBUM POPUP -->
+
+<div class="album-popup" id="albumPopup" onclick="closeAlbum(event)">
+
+    <div class="popup-content" onclick="event.stopPropagation()">
+
+        <button class="close-button" onclick="closeAlbum()">×</button>
+
+        <h2 id="popupTitle">HER MEMORIES</h2>
+        <p class="subtitle" id="popupSubtitle"></p>
+
+        <div class="gallery" id="gallery"></div>
+
+    </div>
+
+</div>
+
+<!-- LAST MESSAGE POPUP -->
+<div class="last-message-popup" id="lastMessagePopup" onclick="closeLastMessage(event)">
+    <div class="last-message-card" onclick="event.stopPropagation()">
+        <button class="last-message-close" onclick="closeLastMessage()">×</button>
+        <h2>A LAST MESSAGE FROM SHYAMA</h2>
+        <p class="last-message-text" id="lastMessageText">AJI MAHARANI THIS IS ALL I CAN I CAN DO NOW COZ AM FAR BUT AGLI BAAR WAHI CELEBRATE KRUNGA AAKE HEHE. WISHINH YOU A SUPER BEST AND HAPPIEST BIRTHDAY EVER AND I HOPE THIS THING THAT I MADE, MAKES YOU HAPPY AND PUT SMILE ON YOUR FACE. ❤️</p>
+         AB HUM CHALTE HAI BAAKI AAP INSTA DEDETI TOH ACHA REHT OR SNAP PR MILTE <BR>
+        FROM YOUR SHYAMA HEHE <BR>
+    </div>
+</div>
+
+
+<script>
+
+/* =================================
+   ALBUM CONTENT
+================================= */
+
+const albums = [
+
+    {
+        title: "TWO LITTLE UNIVERSE",
+        subtitle: "A smile worth a thousand memories.",
+        folder: "album1",
+        files: [
+            { type: "image", name: "photo1.png" },
+            { type: "image", name: "photo2.jpg" },
+            { type: "image", name: "photo3.PNG" },
+            { type: "image", name: "photo4.jpg" },    
+            { type: "video", name: "video1.mp4" },
+            { type: "video", name: "video2.MOV" }
+        ]
+    },
+
+    {
+        title: "PIECES OF YOU",
+        subtitle: "Moments I wish could last forever.",
+        folder: "album2",
+        files: [
+            { type: "image", name: "F1.jpg" },
+            { type: "image", name: "F2.jpg" },
+            { type: "image", name: "F3.PNG" },
+            { type: "image", name: "F4.PNG" },
+            { type: "image", name: "F5.jpg" },
+            { type: "video", name: "F6.MOV" },
+            { type: "image", name: "F7.JPEG" }
+        ]
+    },
+
+    {
+        title: "UR SNAPS",
+        subtitle: "Everything that makes her special.",
+        folder: "album3",
+        files: [
+            { type: "video", name: "video1.mp4" },
+            { type: "video", name: "video2.mp4" },
+            { type: "video", name: "video3.mov" },
+            { type: "video", name: "video4.MOV" },
+            { type: "video", name: "video5.mp4" },
+            { type: "video", name: "video6.mp4" }
+        ]
+    }
+
+];
+
+
+/* LAST MESSAGE POPUP */
+function openLastMessage(event) {
+    if (event) event.stopPropagation();
+    document.getElementById("lastMessagePopup").classList.add("show");
+}
+
+function closeLastMessage(event) {
+    if (event && event.target !== document.getElementById("lastMessagePopup")) {
+        return;
+    }
+    document.getElementById("lastMessagePopup").classList.remove("show");
+}
+
+
+/* OPEN ALBUM */
+
+function openAlbum(index) {
+
+    const album = albums[index];
+
+    document.getElementById("popupTitle").textContent = album.title;
+    document.getElementById("popupSubtitle").textContent = album.subtitle;
+
+    const gallery = document.getElementById("gallery");
+
+    gallery.innerHTML = "";
+
+    if (album.files.length === 0) {
+        gallery.innerHTML =
+            '<div class="empty-message">Memories will appear here soon ❤️</div>';
+    }
+
+    // Add the album folder to every media item so the large viewer
+    // can load the correct image or video from the correct folder.
+    const albumMedia = album.files.map(file => ({
+        ...file,
+        folder: album.folder
+    }));
+
+    albumMedia.forEach((file, mediaIndex) => {
+
+        const path = "images/" + file.folder + "/" + file.name;
+
+        if (file.type === "image") {
+
+            const img = document.createElement("img");
+
+            img.src = path;
+            img.alt = "Memory";
+            img.loading = "lazy";
+            img.onclick = () => openViewer(albumMedia, mediaIndex);
+
+            gallery.appendChild(img);
+
+        } else if (file.type === "video") {
+
+            const video = document.createElement("video");
+
+            video.src = path;
+            video.controls = true;
+            video.preload = "metadata";
+            video.playsInline = true;
+            video.onclick = () => openViewer(albumMedia, mediaIndex);
+
+            gallery.appendChild(video);
+
+        }
+
+    });
+
+    document.getElementById("albumPopup").classList.add("show");
+
+}
+
+
+/* CLOSE ALBUM */
+
+function closeAlbum(event) {
+
+    if (
+        event &&
+        event.target !== document.getElementById("albumPopup")
+    ) {
+        return;
+    }
+
+    const popup = document.getElementById("albumPopup");
+
+    popup.classList.remove("show");
+
+    popup.querySelectorAll("video").forEach(video => {
+
+        video.pause();
+        video.currentTime = 0;
+
+    });
+
+}
+
+
+/* =================================
+   500 ANIMATED STARS
+================================= */
+
+const canvas = document.getElementById("starCanvas");
+const ctx = canvas.getContext("2d");
+
+let stars = [];
+
+function resizeCanvas() {
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    stars = [];
+
+    for (let i = 0; i < 500; i++) {
+
+        stars.push({
+
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+
+            size: Math.random() * 1.8 + .3,
+
+            alpha: Math.random(),
+
+            speed: Math.random() * .008 + .002
+
+        });
+
+    }
+
+}
+
+
+function animateStars() {
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    stars.forEach(star => {
+
+        star.alpha += star.speed;
+
+        if (star.alpha > 1 || star.alpha < .15) {
+
+            star.speed *= -1;
+
+        }
+
+        ctx.beginPath();
+
+        ctx.arc(
+            star.x,
+            star.y,
+            star.size,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fillStyle = `rgba(235,220,255,${star.alpha})`;
+
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = "#cba5ff";
+
+        ctx.fill();
+
+    });
+
+    requestAnimationFrame(animateStars);
+
+}
+
+
+window.addEventListener("resize", resizeCanvas);
+
+resizeCanvas();
+animateStars();
+    // =================================
+// MANUAL PHOTO & VIDEO VIEWER
+// =================================
+
+let currentMedia = [];
+let currentMediaIndex = 0;
+
+function openViewer(albumFiles, index) {
+
+    currentMedia = albumFiles;
+    currentMediaIndex = index;
+
+    document.getElementById("mediaViewer")
+        .classList.add("active");
+
+    showCurrentMedia();
+}
+
+function showCurrentMedia() {
+
+    const container = document.getElementById("viewerContent");
+
+    // Stop previous video
+    container.innerHTML = "";
+
+    const file = currentMedia[currentMediaIndex];
+
+    const path = "images/" + file.folder + "/" + file.name;
+
+    if (file.type === "image") {
+
+        const img = document.createElement("img");
+        img.src = path;
+        container.appendChild(img);
+
+    } else if (file.type === "video") {
+
+        const video = document.createElement("video");
+
+        video.src = path;
+        video.controls = true;
+        video.autoplay = true;
+        video.playsInline = true;
+
+        container.appendChild(video);
+    }
+}
+
+function changeMedia(direction) {
+
+    currentMediaIndex += direction;
+
+    if (currentMediaIndex < 0) {
+        currentMediaIndex = currentMedia.length - 1;
+    }
+
+    if (currentMediaIndex >= currentMedia.length) {
+        currentMediaIndex = 0;
+    }
+
+    showCurrentMedia();
+}
+
+function closeViewer() {
+
+    const container = document.getElementById("viewerContent");
+
+    container.innerHTML = "";
+
+    document.getElementById("mediaViewer")
+        .classList.remove("active");
+}
+
+</script>
+    <!-- MEDIA VIEWER -->
+<div class="media-viewer" id="mediaViewer">
+
+    <button class="viewer-close" onclick="closeViewer()">✕</button>
+
+    <button class="viewer-nav viewer-prev" onclick="changeMedia(-1)">
+        ← BACKWARD
+    </button>
+
+    <div class="viewer-content" id="viewerContent"></div>
+
+    <button class="viewer-nav viewer-next" onclick="changeMedia(1)">
+        FORWARD →
+    </button>
+
+</div>
+
+</body>
+</html>

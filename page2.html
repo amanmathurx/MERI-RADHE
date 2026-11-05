@@ -1,0 +1,493 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Meri Radhe ✨</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    background: #03020c;
+}
+
+.universe {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4% 7%;
+
+    background:
+        radial-gradient(ellipse at 75% 45%,
+        rgba(55, 35, 105, .38), transparent 42%),
+        radial-gradient(ellipse at 25% 70%,
+        rgba(26, 44, 105, .3), transparent 45%),
+        radial-gradient(ellipse at center,
+        #10102b 0%, #080619 48%, #020108 100%);
+}
+
+/* STAR FIELD */
+
+.stars,
+.stars2,
+.stars3 {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.stars {
+    z-index: 0;
+    background-image:
+        radial-gradient(2px 2px at 10% 20%, white 99%, transparent),
+        radial-gradient(2px 2px at 35% 75%, white 99%, transparent),
+        radial-gradient(1px 1px at 70% 30%, white 99%, transparent),
+        radial-gradient(2px 2px at 85% 65%, white 99%, transparent),
+        radial-gradient(1px 1px at 50% 50%, white 99%, transparent),
+        radial-gradient(2px 2px at 25% 45%, white 99%, transparent);
+    background-size: 280px 280px;
+    animation: twinkle 4s infinite alternate;
+}
+
+.stars2 {
+    z-index: 0;
+    background-image:
+        radial-gradient(1px 1px at 15% 65%, #c6d9ff 99%, transparent),
+        radial-gradient(2px 2px at 65% 80%, #fff0c0 99%, transparent),
+        radial-gradient(1px 1px at 90% 15%, white 99%, transparent);
+    background-size: 190px 190px;
+    animation: twinkle 3s infinite alternate-reverse;
+}
+
+.stars3 {
+    z-index: 0;
+    background:
+        radial-gradient(ellipse at 70% 50%,
+        rgba(104, 60, 180, .16), transparent 55%);
+    filter: blur(20px);
+}
+
+@keyframes twinkle {
+    from { opacity: .35; }
+    to { opacity: 1; }
+}
+
+/* LEFT SIDE MESSAGE */
+
+.message {
+    position: relative;
+    z-index: 3;
+    width: 50%;
+    max-width: 620px;
+    padding: 20px;
+}
+
+.message h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(32px, 4.5vw, 60px);
+    font-weight: 500;
+    letter-spacing: 2px;
+
+    background: linear-gradient(
+        120deg,
+        #fff2c2,
+        #d6a84e,
+        #fff0b0,
+        #b98230
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    filter: drop-shadow(0 0 14px rgba(226, 177, 82, .35));
+    margin-bottom: 28px;
+}
+
+.message .description {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(21px, 2.3vw, 29px);
+    line-height: 1.7;
+    color: #f2dfb5;
+    letter-spacing: .5px;
+}
+
+.message .surprise {
+    margin-top: 25px;
+    color: #e5c27e;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(13px, 1.4vw, 17px);
+    letter-spacing: 1px;
+}
+
+/* GOLDEN BUTTON */
+
+.enter-button {
+    margin-top: 35px;
+    position: relative;
+    padding: 17px 34px;
+
+    border: 1px solid #c99b4b;
+    border-radius: 50px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(91, 60, 23, .25),
+        rgba(20, 13, 10, .7)
+    );
+
+    color: #f2d18b;
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+
+    cursor: pointer;
+    overflow: hidden;
+
+    box-shadow:
+        0 0 15px rgba(218, 168, 77, .2),
+        inset 0 0 12px rgba(218, 168, 77, .08);
+
+    transition: all .4s ease;
+}
+
+.enter-button:hover,
+.enter-button:focus-visible {
+    background: linear-gradient(
+        135deg,
+        #fff0b5,
+        #d5a13e,
+        #a86b20
+    );
+
+    color: #1b1005;
+    border-color: #ffe4a1;
+
+    box-shadow:
+        0 0 20px #d9ae59,
+        0 0 45px rgba(255, 191, 72, .55);
+
+    transform: scale(1.06);
+}
+
+.enter-button:active {
+    background: #ffe5a0;
+    color: #160d04;
+    transform: scale(.97);
+}
+
+/* RIGHT SIDE JAGANNATH JI */
+
+.jagannath-area {
+    position: relative;
+    z-index: 2;
+    width: 48%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    isolation: isolate;
+}
+
+/* GOLDEN AURA */
+
+.golden-aura {
+    position: absolute;
+    width: 75%;
+    height: 75%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 190, 55, 0.38) 0%,
+        rgba(255, 170, 35, 0.20) 35%,
+        rgba(255, 190, 60, 0.08) 60%,
+        transparent 75%
+    );
+    filter: blur(28px);
+    animation: divineAura 4s ease-in-out infinite;
+    z-index: 0;
+}
+
+@keyframes divineAura {
+    0%, 100% {
+        opacity: 0.65;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.12);
+    }
+}
+
+@keyframes auraGlow {
+    from {
+        transform: scale(.9);
+        opacity: .55;
+    }
+
+    to {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
+
+/* JAGANNATH IMAGE */
+
+.jagannath-area img {
+    width: 100%;
+    height: 88vh;
+    max-width: 570px;
+    object-fit: contain;
+
+    filter:
+        drop-shadow(0 15px 18px rgba(0,0,0,.55))
+        drop-shadow(0 0 20px rgba(255, 194, 86, .4));
+
+    animation: floating 6s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-15px) scale(1.025);
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    body {
+        overflow: auto;
+    }
+
+    .universe {
+        min-height: 100vh;
+        height: auto;
+        flex-direction: column-reverse;
+        justify-content: center;
+        padding: 20px;
+        gap: 5px;
+    }
+
+    .jagannath-area {
+        width: 100%;
+        height: 45vh;
+    }
+
+    .jagannath-area img {
+        height: 45vh;
+    }
+
+    .message {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .message h1 {
+        font-size: 34px;
+        margin-bottom: 12px;
+    }
+
+    .message .description {
+        font-size: 21px;
+    }
+
+    .enter-button {
+        margin-top: 20px;
+    }
+}
+/* GOLDEN PARTICLES */
+.particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #ff263f;
+    border-radius: 50%;
+    box-shadow:
+        0 0 8px 3px rgba(255, 25, 55, 0.8),
+        0 0 20px 5px rgba(255, 0, 35, 0.5);
+    animation: sparkle 4s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scale(0.7);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.8);
+    }
+}
+}
+
+/* SHOOTING STARS */
+.shooting-star {
+    position: fixed;
+    top: -10%;
+    left: 70%;
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #fff1b8, transparent);
+    transform: rotate(-35deg);
+    opacity: 0;
+    pointer-events: none;
+    animation: shooting 6s linear infinite;
+}
+
+@keyframes shooting {
+    0% {
+        transform: translate(0, 0) rotate(-35deg);
+        opacity: 0;
+    }
+    5% { opacity: 1; }
+    20% {
+        transform: translate(-500px, 350px) rotate(-35deg);
+        opacity: 0;
+    }
+    100% { opacity: 0; }
+}
+    .jagannath-area img {
+    filter:
+        drop-shadow(0 0 8px rgba(255, 204, 92, 0.8))
+        drop-shadow(0 0 22px rgba(255, 174, 40, 0.65))
+        drop-shadow(0 0 45px rgba(255, 190, 60, 0.4));
+}
+.back-button {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    z-index: 1000;
+    padding: 12px 22px;
+    color: #f5d78e;
+    background: transparent;
+    border: 1px solid #d4af37;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    transition: 0.3s ease;
+}
+
+.back-button:hover {
+    background: #d4af37;
+    color: #080817;
+    box-shadow: 0 0 20px #d4af37;
+}
+</style>
+</head>
+
+<body>
+    <div class="particles" id="particles"></div>
+<div class="shooting-star"></div>
+<div class="shooting-star"></div>
+
+<div class="universe">
+
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+
+    <!-- LEFT: MESSAGE -->
+
+    <div class="message">
+
+        <h1>Meri Radhe...</h1>
+
+        <p class="description">
+            Among millions of stars,,<br>
+            even Jaggu Dada knows there's no one quite like you. so here's a little world,<br>
+            made just to celebrate your smile. ♡
+        </p>
+
+        <p class="surprise">
+            Ready for Ur lil. surprise Maharani ji?
+        </p>
+
+<button class="enter-button" onclick="window.location.href='page3.html'">
+    Enter The World Made Just For U ✨
+</button>
+
+    </div>
+
+    <!-- RIGHT: JAGANNATH JI -->
+
+    <div class="jagannath-area">
+
+        <div class="golden-aura"></div>
+
+        <img
+            src="images/Jagannath%20ji.png"
+            alt="Shri Jagannath Ji"
+        >
+
+    </div>
+
+</div>
+
+<script>
+function enterUniverse(button) {
+
+    button.style.background =
+        "linear-gradient(135deg, #fff0b5, #d5a13e, #a86b20)";
+
+    button.style.color = "#1b1005";
+
+    button.style.boxShadow =
+        "0 0 25px #e8bd66, 0 0 55px #d9a447";
+
+    setTimeout(() => {
+        window.location.href = "page3.html";
+    }, 500);
+}
+</script>
+<script>
+const particleBox = document.getElementById("particles");
+
+for (let i = 0; i < 70; i++) {
+    const particle = document.createElement("span");
+    particle.className = "particle";
+
+    particle.style.left = Math.random() * 100 + "%";
+    particle.style.top = Math.random() * 100 + "%";
+    particle.style.animationDelay = Math.random() * 4 + "s";
+    particle.style.animationDuration = (2 + Math.random() * 4) + "s";
+
+    particleBox.appendChild(particle);
+}
+</script>    
+<button class="back-button" onclick="window.location.href='index.html'">
+    ← BACK 
+</button>
+</body>
+</html>
